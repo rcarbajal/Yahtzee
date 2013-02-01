@@ -1,0 +1,21 @@
+﻿Application {
+	backgroundColor: #000000;
+	color: #ffffff;
+}
+
+Label.scoreheader {
+	fontWeight: bold;
+	textDecoration: underline;
+	fontSize: 12px;
+}
+
+Label.scoreBox {
+	textAlign: center;
+	color: #000000;
+}
+
+Label.gameOver {
+	fontWeight: bold;
+	fontSize: 14px;
+	color: #cc0000;
+}

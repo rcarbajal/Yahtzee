@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" width="600" height="500" creationComplete="init()">
+	<mx:Script source="yahtzee.as" />
+	<mx:Style source="stylesheet.css" />
+	
+	<mx:Button id="btnStart" label="New Game" click="resetGame()" x="250" y="5" />
+	<mx:Label id="lblGameOver" text="Game Over" x="480" y="5" visible="true" styleName="gameOver" />
+	
+	<mx:Label text="Upper" x="10" y="20" styleName="scoreheader" />
+	
+	<mx:HBox x="20" y="40" verticalAlign="middle">
+		<mx:Button label="1's" click="score('1')" id="btn1" /><mx:Label opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" id="lbl1" />
+		<mx:Button label="2's" click="score('2')" id="btn2" /><mx:Label opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" id="lbl2" />
+		<mx:Button label="3's" click="score('3')" id="btn3" /><mx:Label opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" id="lbl3" />
+		<mx:Button label="4's" click="score('4')" id="btn4" /><mx:Label opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" id="lbl4" />
+		<mx:Button label="5's" click="score('5')" id="btn5" /><mx:Label opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" id="lbl5" />
+		<mx:Button label="6's" click="score('6')" id="btn6" /><mx:Label opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" id="lbl6" />
+	</mx:HBox>
+	
+	<mx:Label x="20" y="70" text="Scored Total" /><mx:Label x="110" y="70" opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" id="lblScored" text="0" />
+	<mx:Label x="20" y="90" text="Bonus (63+)" /><mx:Label x="110" y="90" opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" id="lblBonus" text="0" />
+	<mx:Label x="20" y="110" text="Upper Total" /><mx:Label x="110" y="110" opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" id="lblUpper" text="0" />
+	
+	<mx:Label text="Lower" x="10" y="130" styleName="scoreheader" />
+	
+	<mx:HBox x="20" y="150" verticalAlign="middle">
+		<mx:Button label="3 of a Kind" click="score('3kind')" id="btn3Kind" /><mx:Label opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" id="lbl3Kind" />
+		<mx:Button label="4 of a Kind" click="score('4kind')" id="btn4Kind" /><mx:Label opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" id="lbl4Kind" />
+		<mx:Button label="Full House" click="score('full')" id="btnFull" /><mx:Label opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" id="lblFullHouse" />
+		<mx:Button label="Sm. Straight" click="score('smstr8')" id="btnSm" /><mx:Label opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" id="lblSm" />
+	</mx:HBox>
+	<mx:HBox x="20" y="180" verticalAlign="middle">
+		<mx:Button label="Lg. Straight" click="score('lgstr8')" id="btnLg" /><mx:Label opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" id="lblLg" />
+		<mx:Button label="Yahtzee" click="score('yahtzee')" id="btnYahtzee" /><mx:Label opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" id="lblYahtzee" />
+		<mx:Button label="Chance" click="score('chance')" id="btnChance" /><mx:Label opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" id="lblChance" />
+	</mx:HBox>
+	
+	<mx:Label x="20" y="210" text="Lower Total" /><mx:Label x="125" y="210" opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" id="lblLower" text="0" />
+	<mx:Label x="20" y="230" text="Bonus Yahtzees" /><mx:Label x="125" y="230" opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" id="lblBonusYahtzee" text="0" />
+	
+	<mx:Label x="20" y="270" text="Game Total" /><mx:Label x="110" y="270" opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" id="lblGameTotal" text="0" />
+	
+	<mx:VBox x="200" y="280" horizontalAlign="center">
+		<mx:HBox verticalAlign="middle">
+			<mx:VBox horizontalAlign="center">
+				<mx:CheckBox id="chkDie1" />
+				<mx:Label text="Die 1" />
+				<mx:Label id="lblDie1" opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" />
+			</mx:VBox>
+			<mx:VBox horizontalAlign="center">
+				<mx:CheckBox id="chkDie2" />
+				<mx:Label text="Die 2" />
+				<mx:Label id="lblDie2" opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" />
+			</mx:VBox>
+			<mx:VBox horizontalAlign="center">
+				<mx:CheckBox id="chkDie3" />
+				<mx:Label text="Die 3" />
+				<mx:Label id="lblDie3" opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" />
+			</mx:VBox>
+			<mx:VBox horizontalAlign="center">
+				<mx:CheckBox id="chkDie4" />
+				<mx:Label text="Die 4" />
+				<mx:Label id="lblDie4" opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" />
+			</mx:VBox>
+			<mx:VBox horizontalAlign="center">
+				<mx:CheckBox id="chkDie5" />
+				<mx:Label text="Die 5" />
+				<mx:Label id="lblDie5" opaqueBackground="#ffffff" width="30" height="15" styleName="scoreBox" />
+			</mx:VBox>
+		</mx:HBox>
+		<mx:Button id="btnRoll" label="Roll Dice" click="roll()" />
+	</mx:VBox>
+</mx:Application>
